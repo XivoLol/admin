@@ -26,6 +26,28 @@ client.on('message',async message => {
     });
   }
 });
+client.on('message', message => {
+if (message.content.startsWith("kick")) {
+            if (!message.member.hasPermission('ADMINSTRATOR')) return message.reply("**⚠ | `[ADMINSTRATOR]`لا يوجد لديك صلاحية**").catch(console.error);
+    var mention = message.mentions.members.first();
+    if(!mention) return message.channel.send("يجب منشن العضو");
+
+    mention.kick("By: " + message.author.tag);
+    
+    message.channel.send("تم أعطاء كيك الى : " + mention.tag);
+};
+});
+client.on('message', message => {
+if (message.content.startsWith("ban")) {
+              if (!message.member.hasPermission('ADMINSTRATOR')) return message.reply("**⚠ | `[ADMINSTRATOR]`لا يوجد لديك صلاحية**").catch(console.error);
+    var mention = message.mentions.members.first();
+    if(!mention) return message.channel.send("يجب منشن العضو");
+
+    mention.ban("By: " + message.author.tag);
+    
+    message.channel.send("تم أعطاء باند الى : " + mention.tag);
+};
+});
 client.on("message", message => {
     if (message.author.bot) return;
    
@@ -90,52 +112,7 @@ client.on("message", message => {
   };
  
   });
-  client.on('message', message => {
-    if (command === prefix + "kick") {
-if(!message.guild.member(message.author).hasPermission("MOVE_MEMBERS")) return message.reply("**You Don't Have ` BAN_MEMBERS ` Permission**").then(msg => msg.delete(5000));
-  if(!message.guild.member(client.user).hasPermission("BAN_MEMBERS")) return message.reply("**I Don't Have ` BAN_MEMBERS ` Permission**");
-    var mention = message.mentions.members.first();
-    if(!mention) return message.channel.send("يجب منشن العضو");
 
-    mention.kick("By: " + message.author.tag);
-    
-    message.channel.send("تم أعطاء كيك الى : " + mention.tag);
-};
-});
-  client.on('message', message => {
-  if (message.author.ban) return;
-  if (!message.content.startsWith(prefix)) return;
-
-  let command = message.content.split(" ")[0];
-  command = command.slice(prefix.length);
-
-  let args = message.content.split(" ").slice(1);
-
-    if (command === prefix + "ban") {
-               if(!message.channel.guild) return;
-         
-  if(!message.guild.member(message.author).hasPermission("MOVE_MEMBERS")) return message.reply("**You Don't Have ` BAN_MEMBERS ` Permission**").then(msg => msg.delete(5000));
-  if(!message.guild.member(client.user).hasPermission("BAN_MEMBERS")) return message.reply("**I Don't Have ` BAN_MEMBERS ` Permission**");
-      let modlog = client.channels.find('name', 'log');
-  let user = message.mentions.users.first();
-  let reason = message.content.split(" ").slice(2).join(" ");
-
-  if (message.mentions.users.size < 1) return message.reply("**منشن شخص**");
-  if(!reason) return message.reply ("**اكتب سبب الطرد**");
-  if (!message.guild.member(user)
-  .bannable) return message.reply("**لايمكنني طرد شخص اعلى من رتبتي**");
-
-  message.guild.member(user).ban(7, user);
-
-  const banembed = new Discord.RichEmbed()
-  .setAuthor(`BANNED!`, user.displayAvatarURL)
-  .setColor("RANDOM")
-  .setTimestamp()
-  .addField("**User:**",  '**[ ' + `${user.tag}` + ' ]**')
-  .addField("**By:**", '**[ ' + `${message.author.tag}` + ' ]**')
-  .addField("**Reason:**", '**[ ' + `${reason}` + ' ]**')
-}
-});
 client.on('message', message => {
 if (message.content.startsWith(prefix + "ct")) {
     var args = message.content.split(" ").slice(1);
