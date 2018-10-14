@@ -27,7 +27,9 @@ client.on('message',async message => {
   }
 });
 client.on('message', message => {
-if (message.content.startsWith("kick")) {
+ let command = message.content.split(" ")[0];
+   
+    if (command === prefix + "ban") {
             if (!message.member.hasPermission('ADMINSTRATOR')) return message.reply("**⚠ | `[ADMINSTRATOR]`لا يوجد لديك صلاحية**").catch(console.error);
     var mention = message.mentions.members.first();
     if(!mention) return message.channel.send("يجب منشن العضو");
@@ -38,8 +40,11 @@ if (message.content.startsWith("kick")) {
 };
 });
 client.on('message', message => {
-if (message.content.startsWith("ban")) {
-              if (!message.member.hasPermission('ADMINSTRATOR')) return message.reply("**⚠ | `[ADMINSTRATOR]`لا يوجد لديك صلاحية**").catch(console.error);
+ 
+    let command = message.content.split(" ")[0];
+   
+    if (command === prefix + "ban") {
+     if (!message.member.hasPermission('ADMINSTRATOR')) return message.reply("**⚠ | `[ADMINSTRATOR]`لا يوجد لديك صلاحية**").catch(console.error);
     var mention = message.mentions.members.first();
     if(!mention) return message.channel.send("يجب منشن العضو");
 
@@ -159,6 +164,7 @@ client.on('message', message => {
     }
 });
 client.on('message', message => {
+    let command = message.content.split(" ")[0];
 
     if (command === prefix + "mutechannel") {
                         if(!message.channel.guild) return message.reply(' This command only for servers');
@@ -171,6 +177,7 @@ if(!message.member.hasPermission('MANAGE_MESSAGES')) return message.reply(' لي
                message.reply("تم تقفيل الشات :white_check_mark: ")
            });
              }
+   
     if (command === prefix + "unmutechannel") {
     if(!message.channel.guild) return message.reply(' This command only for servers');
 
