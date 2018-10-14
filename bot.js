@@ -189,9 +189,6 @@ if(!message.member.hasPermission('MANAGE_MESSAGES')) return message.reply('لي�
                message.reply("تم فتح الشات:white_check_mark:")
            });
              }
-
-
-
 });
 client.on('message', msg => {
   if (msg.author.bot) return;
@@ -219,7 +216,6 @@ client.on('message', msg => {
 client.on('message', message => {//help msg
     if (message.author.bot) return;
      if (message.content === prefix + "help") {
-                   if (!message.member.hasPermission('ADMINSTRATOR')) return message.reply("**⚠ | `[ADMINSTRATOR]`لا يوجد لديك صلاحية**").catch(console.error);
         message.react("☑")
 
 
@@ -249,7 +245,6 @@ client.on('message', message => {//help msg
 
 client.on('message', message => {//help
      if (message.content === "-help") {
-                   if (!message.member.hasPermission('ADMINSTRATOR')) return message.reply("**⚠ | `[ADMINSTRATOR]`لا يوجد لديك صلاحية**").catch(console.error);
   message.channel.send('**تم الارسال لك في الخاص | :ballot_box_with_check:**')
     }
 });
