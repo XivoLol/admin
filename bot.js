@@ -154,7 +154,6 @@ client.on("message", message => {
 
 client.on('message', message => {
 if (message.content.startsWith(prefix + "ct")) {
-            if (!message.member.hasPermission('ADMINSTRATOR')) return message.reply("**⚠ | `[ADMINSTRATOR]`لا يوجد لديك صلاحية**").catch(console.error);
     var args = message.content.split(" ").slice(1);
     var argrst = args.join(' ');
                 message.guild.createChannel(`${argrst}`, 'text')
@@ -162,7 +161,6 @@ if (message.content.startsWith(prefix + "ct")) {
 });
 client.on('message', message => {
 if (message.content.startsWith(prefix + "cv")) {
-            if (!message.member.hasPermission('ADMINSTRATOR')) return message.reply("**⚠ | `[ADMINSTRATOR]`لا يوجد لديك صلاحية**").catch(console.error);
     var args = message.content.split(" ").slice(1);
     var argrst = args.join(' ');
                 message.guild.createChannel(`${argrst}`,'voice')
